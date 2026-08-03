@@ -11,6 +11,8 @@ class User(Base):
     email = Column(String(255), unique=True, index=True, nullable=False)
     password_hash = Column(String(255), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
+    daily_reminder = Column(Boolean, default=True)
+    data_privacy = Column(Boolean, default=False)
 
     emotion_history = relationship("EmotionHistory", back_populates="user")
     wellness_points = relationship("WellnessPoints", back_populates="user")

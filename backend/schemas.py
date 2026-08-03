@@ -12,6 +12,8 @@ class UserResponse(BaseModel):
     name: str
     email: str
     created_at: datetime
+    daily_reminder: bool
+    data_privacy: bool
 
     class Config:
         from_attributes = True

@@ -39,6 +39,10 @@ def update_profile(
         current_user.name = user_update["name"]
     if "password" in user_update and user_update["password"]:
         current_user.password_hash = auth.get_password_hash(user_update["password"])
+    if "daily_reminder" in user_update:
+        current_user.daily_reminder = user_update["daily_reminder"]
+    if "data_privacy" in user_update:
+        current_user.data_privacy = user_update["data_privacy"]
     
     db.commit()
     db.refresh(current_user)
