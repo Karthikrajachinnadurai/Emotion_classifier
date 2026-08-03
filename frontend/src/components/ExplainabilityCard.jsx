@@ -1,16 +1,51 @@
 import React, { useState } from 'react';
 import { Info, Activity, Clock, ShieldAlert } from 'lucide-react';
 
+const EMOJI_MAP = {
+  joy: '😊',
+  sadness: '😢',
+  anger: '😠',
+  fear: '😨',
+  love: '❤️',
+  surprise: '😲'
+};
+
 const ExplainabilityCard = ({ prediction }) => {
   const [expanded, setExpanded] = useState(false);
 
   if (!prediction) return null;
 
+  const currentEmotion = prediction.emotion ? prediction.emotion.toLowerCase() : 'none';
+  const emoji = EMOJI_MAP[currentEmotion] || '🤖';
+
   return (
     <div style={{ marginTop: '12px', background: 'var(--overlay-light)', borderRadius: '8px', border: '1px solid var(--border-glass)', fontSize: '0.85rem' }}>
+      
+      <style>
+        {`
+          @keyframes popInEmoji {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .animated-emoji-container {
+            animation: popInEmoji 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+          }
+        `}
+      </style>
+
+      {/* Large Emoji Header */}
+      <div style={{ textAlign: 'center', padding: '24px 12px 16px 12px' }}>
+        <div className="animated-emoji-container" style={{ fontSize: '96px', lineHeight: 1 }}>
+          {emoji}
+        </div>
+        <div style={{ fontSize: '1.25rem', fontWeight: 600, textTransform: 'capitalize', marginTop: '12px' }}>
+          {prediction.emotion || 'Unknown'}
+        </div>
+      </div>
+
       <div 
         onClick={() => setExpanded(!expanded)} 
-        style={{ padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: 'var(--text-secondary)' }}
+        style={{ padding: '12px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: 'var(--text-secondary)', borderTop: '1px solid var(--border-glass)' }}
       >
         <Info size={16} /> 
         <span>AI Prediction Insights {expanded ? '(Click to hide)' : '(Click to view)'}</span>
