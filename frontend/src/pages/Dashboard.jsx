@@ -157,7 +157,7 @@ const Dashboard = () => {
               
               {/* AI Bubble */}
               <div style={{ alignSelf: 'flex-start', maxWidth: '80%' }}>
-                <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-glass)', padding: '12px 16px', borderRadius: '16px', borderBottomLeftRadius: '4px' }}>
+                <div style={{ background: 'var(--overlay-light)', border: '1px solid var(--border-glass)', padding: '12px 16px', borderRadius: '16px', borderBottomLeftRadius: '4px' }}>
                   <div dangerouslySetInnerHTML={{ __html: chat.aiMsg ? chat.aiMsg.replace(/\n/g, '<br/>') : 'Analyzing...' }}></div>
                 </div>
                 {chat.prediction && <ExplainabilityCard prediction={chat.prediction} />}
@@ -168,7 +168,7 @@ const Dashboard = () => {
         </div>
         
         {/* Input Area */}
-        <div style={{ padding: '16px 24px', borderTop: '1px solid var(--border-glass)', background: 'rgba(10, 12, 19, 0.5)' }}>
+        <div style={{ padding: '16px 24px', borderTop: '1px solid var(--border-glass)', background: 'var(--overlay-light)' }}>
           <form onSubmit={handlePredict} style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
             {/* 🎙 Mic button — populates text field on transcript, does not auto-predict */}
             <SpeechRecorder

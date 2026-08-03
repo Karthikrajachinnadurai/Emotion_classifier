@@ -10,6 +10,8 @@ import Analytics from './pages/Analytics';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 
+import ThemeToggle from './components/ThemeToggle';
+
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
   
@@ -21,8 +23,10 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   return (
-    <Routes>
-      {/* Public Routes */}
+    <>
+      <ThemeToggle />
+      <Routes>
+        {/* Public Routes */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       
@@ -35,7 +39,8 @@ function App() {
       
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+      </Routes>
+    </>
   );
 }
 

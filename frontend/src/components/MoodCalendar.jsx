@@ -8,7 +8,7 @@ const EMOTION_COLORS = {
   fear: '#9B59B6',
   anger: '#E05A3A',
   crisis: '#FF0000',
-  None: 'rgba(255,255,255,0.05)'
+  None: 'var(--overlay-light)'
 };
 
 const MoodCalendar = ({ history }) => {

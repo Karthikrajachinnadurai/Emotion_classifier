@@ -50,7 +50,7 @@ const Sidebar = () => {
         onClick={logout}
         style={{
           display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 16px',
-          background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-glass)',
+          background: 'var(--overlay-light)', border: '1px solid var(--border-glass)',
           borderRadius: '8px', color: 'var(--text-secondary)', cursor: 'pointer',
           marginTop: 'auto', fontWeight: 600, fontFamily: 'Inter'
         }}

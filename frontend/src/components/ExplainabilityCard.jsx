@@ -7,7 +7,7 @@ const ExplainabilityCard = ({ prediction }) => {
   if (!prediction) return null;
 
   return (
-    <div style={{ marginTop: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid var(--border-glass)', fontSize: '0.85rem' }}>
+    <div style={{ marginTop: '12px', background: 'var(--overlay-light)', borderRadius: '8px', border: '1px solid var(--border-glass)', fontSize: '0.85rem' }}>
       <div 
         onClick={() => setExpanded(!expanded)} 
         style={{ padding: '8px 12px', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: 'var(--text-secondary)' }}
@@ -35,8 +35,8 @@ const ExplainabilityCard = ({ prediction }) => {
                   .sort((a,b) => b[1] - a[1])
                   .map(([emo, prob]) => (
                   <div key={emo} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                    <div style={{ width: '60px', textTransform: 'capitalize', fontSize: '0.8rem' }}>{emo}</div>
-                    <div style={{ flex: 1, background: 'rgba(255,255,255,0.1)', height: '6px', borderRadius: '3px' }}>
+                    <div style={{ width: '60px', textTransform: 'capitalize', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{emo}</div>
+                    <div style={{ flex: 1, background: 'var(--overlay-medium)', height: '6px', borderRadius: '3px' }}>
                       <div style={{ width: `${prob * 100}%`, background: 'var(--accent-secondary)', height: '100%', borderRadius: '3px' }}></div>
                     </div>
                     <div style={{ width: '40px', textAlign: 'right', fontSize: '0.75rem' }}>{(prob*100).toFixed(0)}%</div>

@@ -63,7 +63,7 @@ const Analytics = () => {
       )}
 
       {weeklyData?.suggestions && weeklyData.suggestions.length > 0 && (
-        <GlassCard style={{ marginBottom: '32px', background: 'rgba(108,99,255,0.1)', borderLeft: '4px solid var(--accent-primary)' }}>
+        <GlassCard style={{ marginBottom: '32px', background: 'var(--overlay-medium)', borderLeft: '4px solid var(--accent-primary)' }}>
           <h3 style={{ marginBottom: '8px' }}>Insight</h3>
           <p style={{ color: 'var(--text-secondary)' }}>{weeklyData.suggestions[0]}</p>
         </GlassCard>
@@ -81,7 +81,7 @@ const Analytics = () => {
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip contentStyle={{ background: '#13162a', border: '1px solid rgba(255,255,255,0.1)' }} />
+                <Tooltip contentStyle={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-glass)' }} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -100,9 +100,9 @@ const Analytics = () => {
           <div style={{ height: '300px' }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={weeklyTrend}>
-                <XAxis dataKey="date" stroke="rgba(255,255,255,0.2)" />
-                <YAxis stroke="rgba(255,255,255,0.2)" />
-                <Tooltip contentStyle={{ background: '#13162a', border: '1px solid rgba(255,255,255,0.1)' }} />
+                <XAxis dataKey="date" stroke="var(--text-secondary)" />
+                <YAxis stroke="var(--text-secondary)" />
+                <Tooltip contentStyle={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-glass)' }} />
                 <Bar dataKey="score" fill="#6C63FF" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

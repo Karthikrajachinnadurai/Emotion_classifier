@@ -63,7 +63,7 @@ const History = () => {
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
             <thead>
-              <tr style={{ background: 'rgba(255,255,255,0.05)', borderBottom: '1px solid var(--border-glass)' }}>
+              <tr style={{ background: 'var(--overlay-light)', borderBottom: '1px solid var(--border-glass)' }}>
                 <th style={{ padding: '16px' }}>Date</th>
                 <th style={{ padding: '16px' }}>Emotion</th>
                 <th style={{ padding: '16px' }}>Message</th>
@@ -96,26 +96,27 @@ const History = () => {
           </table>
         </div>
         
-        {/* Pagination */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '16px', alignItems: 'center', background: 'rgba(255,255,255,0.02)' }}>
+        {totalPages > 1 && (
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '16px', alignItems: 'center', background: 'var(--overlay-light)' }}>
           <span style={{ color: 'var(--text-muted)' }}>Showing {paginated.length} of {filtered.length} entries</span>
           <div style={{ display: 'flex', gap: '8px' }}>
             <button 
               disabled={currentPage === 1}
               onClick={() => setCurrentPage(p => p - 1)}
-              style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '4px', color: '#fff', cursor: currentPage === 1 ? 'not-allowed' : 'pointer' }}
+              style={{ padding: '6px 12px', background: 'var(--overlay-medium)', border: 'none', borderRadius: '4px', color: 'var(--text-primary)', cursor: currentPage === 1 ? 'not-allowed' : 'pointer' }}
             >
-              Prev
+              Previous
             </button>
             <button 
               disabled={currentPage === totalPages || totalPages === 0}
               onClick={() => setCurrentPage(p => p + 1)}
-              style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '4px', color: '#fff', cursor: currentPage === totalPages || totalPages === 0 ? 'not-allowed' : 'pointer' }}
+              style={{ padding: '6px 12px', background: 'var(--overlay-medium)', border: 'none', borderRadius: '4px', color: 'var(--text-primary)', cursor: currentPage === totalPages || totalPages === 0 ? 'not-allowed' : 'pointer' }}
             >
               Next
             </button>
           </div>
         </div>
+        )}
       </GlassCard>
     </div>
   );

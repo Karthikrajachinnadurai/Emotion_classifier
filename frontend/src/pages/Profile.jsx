@@ -73,7 +73,7 @@ const Profile = () => {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '16px' }}>
               {badges.map(badge => (
                 <div key={badge.id} style={{ 
-                  background: 'rgba(255,255,255,0.03)', 
+                  background: 'var(--overlay-light)', 
                   border: '1px solid var(--border-glass)', 
                   borderRadius: '12px', 
                   padding: '16px', 
