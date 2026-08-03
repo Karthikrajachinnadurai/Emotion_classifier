@@ -26,19 +26,7 @@ const Sidebar = () => {
           <NavLink
             key={item.name}
             to={item.path}
-            style={({ isActive }) => ({
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              padding: '12px 16px',
-              borderRadius: '8px',
-              color: isActive ? '#fff' : 'var(--text-secondary)',
-              background: isActive ? 'rgba(108,99,255,0.15)' : 'transparent',
-              textDecoration: 'none',
-              fontWeight: isActive ? 600 : 500,
-              border: isActive ? '1px solid rgba(108,99,255,0.3)' : '1px solid transparent',
-              transition: 'all 0.2s ease'
-            })}
+            className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}
           >
             {item.icon}
             {item.name}
@@ -48,12 +36,7 @@ const Sidebar = () => {
       
       <button 
         onClick={logout}
-        style={{
-          display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 16px',
-          background: 'var(--overlay-light)', border: '1px solid var(--border-glass)',
-          borderRadius: '8px', color: 'var(--text-secondary)', cursor: 'pointer',
-          marginTop: 'auto', fontWeight: 600, fontFamily: 'Inter'
-        }}
+        className="sidebar-logout"
       >
         <LogOut size={20} />
         Log Out
