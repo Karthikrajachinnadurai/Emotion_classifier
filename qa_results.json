@@ -1,0 +1,1 @@
+{"passed": 58, "failed": 2, "warnings": 0, "bugs": ["Backend is reachable", "Phase 1 exception: Expecting value: line 1 column 1 (char 0)"], "performance": {"backend_health_ms": 70282.83429145813, "avg_inference_ms": 1822.9629596074421}}

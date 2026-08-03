@@ -1,6 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from . import models, database, ml
+from . import models, database, ml, dependencies
 from .routers import auth, predict, gamification, speech
 from contextlib import asynccontextmanager
 
@@ -47,6 +47,22 @@ app.include_router(auth.router)
 app.include_router(predict.router)
 app.include_router(gamification.router)
 app.include_router(speech.router)  # Speech-to-Text — isolated, does not affect other routes
+
+@app.get("/health")
+def health_check(db: database.SessionLocal = Depends(dependencies.get_db)):
+    db_connected = False
+    try:
+        db.execute("SELECT 1")
+        db_connected = True
+    except:
+        pass
+        
+    return {
+        "status": "ok",
+        "db_status": "connected" if db_connected else "disconnected",
+        "model_loaded": ml.model is not None,
+        "whisper_loaded": ml.whisper_model is not None
+    }
 
 @app.get("/")
 def read_root():

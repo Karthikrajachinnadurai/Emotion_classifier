@@ -28,3 +28,18 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
 @router.get("/profile", response_model=schemas.UserResponse)
 def get_profile(current_user: models.User = Depends(dependencies.get_current_user)):
     return current_user
+
+@router.put("/profile", response_model=schemas.UserResponse)
+def update_profile(
+    user_update: dict,
+    db: Session = Depends(dependencies.get_db),
+    current_user: models.User = Depends(dependencies.get_current_user)
+):
+    if "name" in user_update and user_update["name"]:
+        current_user.name = user_update["name"]
+    if "password" in user_update and user_update["password"]:
+        current_user.password_hash = auth.get_password_hash(user_update["password"])
+    
+    db.commit()
+    db.refresh(current_user)
+    return current_user
