@@ -1,0 +1,113 @@
+{
+  "joy": {
+    "high": {
+      "default": [
+        "That's wonderful to hear! Taking a moment to appreciate these positive feelings can help solidify them. What contributed most to this feeling?"
+      ],
+      "family": [
+        "It sounds like you had a great time with your family. Treasuring those moments builds strong connections!"
+      ]
+    },
+    "medium": {
+      "default": [
+        "I'm not completely sure. Could you tell me a little more about what's making you feel good?"
+      ]
+    },
+    "low": {
+      "default": [
+        "I'm detecting some positive undertones, but I don't want to assume. Could you elaborate on how you're feeling right now?"
+      ]
+    }
+  },
+  "sadness": {
+    "high": {
+      "default": [
+        "I'm sorry you're feeling this way. It's completely valid to feel sad sometimes. Remember that this feeling is temporary."
+      ],
+      "lonely": [
+        "Feeling lonely is incredibly tough. You are not alone, even if it feels that way right now. Would it help to talk to a friend?"
+      ]
+    },
+    "medium": {
+      "default": [
+        "I'm not completely sure. Could you tell me a little more about what's weighing on your mind?"
+      ]
+    },
+    "low": {
+      "default": [
+        "I'm not entirely certain, but it sounds like you might be feeling a bit down. How would you describe your mood?"
+      ]
+    }
+  },
+  "anger": {
+    "high": {
+      "default": [
+        "It's clear you're feeling very frustrated. It's okay to be angry. Taking a few deep breaths can help create space between the feeling and your reaction."
+      ],
+      "work": [
+        "Work frustrations can be overwhelming. Try stepping away for a 5-minute break to reset your mind."
+      ]
+    },
+    "medium": {
+      "default": [
+        "I'm not completely sure. Could you tell me a little more about what's bothering you?"
+      ]
+    },
+    "low": {
+      "default": [
+        "I hear some tension in what you're saying, but I'm not sure if it's anger. What exactly are you feeling right now?"
+      ]
+    }
+  },
+  "fear": {
+    "high": {
+      "default": [
+        "It sounds like you're experiencing a lot of anxiety right now. Let's try grounding ourselves. Can you name three things you can see around you?"
+      ]
+    },
+    "medium": {
+      "default": [
+        "I'm not completely sure. Could you tell me a little more about what's making you feel anxious or uneasy?"
+      ]
+    },
+    "low": {
+      "default": [
+        "I sense you might be feeling a bit worried. Could you share a bit more so I can understand better?"
+      ]
+    }
+  },
+  "surprise": {
+    "high": {
+      "default": [
+        "Wow, that sounds really unexpected! Surprise can be quite a jolt. How are you processing this new information?"
+      ]
+    },
+    "medium": {
+      "default": [
+        "I'm not completely sure. Could you tell me a little more about what surprised you?"
+      ]
+    },
+    "low": {
+      "default": [
+        "It seems something unexpected occurred. How did that make you feel?"
+      ]
+    }
+  },
+  "love": {
+    "high": {
+      "default": [
+        "That's beautiful. Feeling love and deep connection is one of the most rewarding human experiences. Cherish this feeling!"
+      ]
+    },
+    "medium": {
+      "default": [
+        "I'm not completely sure. Could you tell me a little more about this connection?"
+      ]
+    },
+    "low": {
+      "default": [
+        "I'm detecting some warmth in your words. Are you feeling particularly affectionate right now?"
+      ]
+    }
+  }
+}

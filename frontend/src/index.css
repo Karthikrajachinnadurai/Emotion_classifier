@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-primary: #0a0c13;
+  --bg-secondary: #13162a;
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --accent-primary: #6C63FF;
+  --accent-secondary: #48B8D0;
+  --accent-gradient: linear-gradient(135deg, #6C63FF 0%, #48B8D0 100%);
+  --text-primary: #F0F2FF;
+  --text-secondary: #9FA3C0;
+  --text-muted: #5D6080;
+  --shadow-glass: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(108,99,255,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(72,184,208,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-glass);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+}
+
+.input-field {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(108,99,255,0.2);
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  background: rgba(19, 22, 42, 0.7);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border-glass);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Auth Layout */
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Speech-to-Text (SpeechRecorder) Component Styles
+   ─────────────────────────────────────────────────────────────── */
+
+/* Wrapper: aligns button + status inline */
+.stt-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Button container — needed for the pulse ring overlay */
+.stt-btn-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+/* ── Mic button ───────────────────────────────────────────────── */
+.stt-btn {
+  position: relative;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-glass);
+  border: 1.5px solid var(--border-glass);
+  color: var(--btn-color, var(--accent-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(12px);
+}
+
+.stt-btn:hover:not(:disabled) {
+  background: rgba(108, 99, 255, 0.12);
+  border-color: var(--btn-color, var(--accent-primary));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.25);
+}
+
+.stt-btn:active:not(:disabled) {
+  transform: scale(0.93);
+}
+
+.stt-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Recording state — red tinted */
+.stt-btn--recording {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border-color: #EF4444 !important;
+  color: #EF4444 !important;
+}
+
+/* Processing state — subtle dim */
+.stt-btn--processing {
+  background: rgba(167, 139, 250, 0.1) !important;
+  border-color: #A78BFA !important;
+  color: #A78BFA !important;
+}
+
+/* ── Pulse ring ───────────────────────────────────────────────── */
+.stt-pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--pulse-color, var(--accent-primary));
+  opacity: 0;
+  animation: stt-pulse 1.6s ease-out infinite;
+}
+
+@keyframes stt-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* ── Status label ─────────────────────────────────────────────── */
+.stt-status-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  animation: stt-fade-in 0.2s ease;
+}
+
+/* ── Error toast ──────────────────────────────────────────────── */
+.stt-error-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.76rem;
+  color: #FCA5A5;
+  max-width: 280px;
+  line-height: 1.4;
+  animation: stt-fade-in 0.2s ease;
+}
+
+/* ── Transcript preview ───────────────────────────────────────── */
+.stt-transcript-preview {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 0.76rem;
+  color: #6EE7B7;
+  max-width: 280px;
+  line-height: 1.4;
+  animation: stt-fade-in 0.2s ease;
+}
+
+.stt-transcript-text {
+  font-style: italic;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ── Dismiss button (inside toast/preview) ────────────────────── */
+.stt-dismiss-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: opacity 0.15s ease;
+}
+
+.stt-dismiss-btn:hover {
+  opacity: 1;
+}
+
+/* ── Spinner animation ────────────────────────────────────────── */
+.stt-spin {
+  animation: stt-spinner 0.9s linear infinite;
+}
+
+@keyframes stt-spinner {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Fade-in utility ──────────────────────────────────────────── */
+@keyframes stt-fade-in {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
